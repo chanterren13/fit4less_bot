@@ -1,10 +1,10 @@
 from selenium import webdriver
-from selenium.webdriver import ActionChains
+#from selenium.webdriver import ActionChains
 from time import sleep
 
 class Fit4LessBot():
     def __init__(self):
-        self.driver = webdriver.Chrome('/mnt/c/webdrivers/chromedriver.exe')
+        self.driver = webdriver.Chrome(executable_path='/mnt/c/webdrivers/chromedriver.exe')
 
     def login(self, email, password):
         self.driver.get('https://myfit4less.gymmanager.com/portal/login.asp')
