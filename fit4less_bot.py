@@ -29,11 +29,12 @@ class Fit4LessBot():
         date_btn.click()
 
     def _find_time(self, time):
-        time_btn = self.driver.find_element_by_id()
-
-    def book(self, date, time):
-        self._find_date(date)
-        self._find_time(time)
+        # //div[@class='available-slots']/div[@data-slottime='at time']
+        time_btn = self.driver.find_element_by_xpath("//div[@class='reserved-slots'/div[@data-slottime='at "+time+""']")
+        btn_location = str(btn.location['y']+100)
+        self.driver.execute_script("window.scrollTo(0, "+btn_location+");")
+        time_btn.click()
+        
 
 # Get login info from user
 
