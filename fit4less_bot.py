@@ -4,7 +4,7 @@ from time import sleep
 
 class Fit4LessBot():
     def __init__(self):
-        self.driver = webdriver.Chrome('/mnt/c/webdrivers/chromedriver.exe')
+        self.driver = webdriver.Chrome(executable_path='/mnt/c/webdrivers/chromedriver.exe')
 
     def login(self, email, password):
         self.driver.get('https://myfit4less.gymmanager.com/portal/login.asp')
@@ -28,9 +28,26 @@ class Fit4LessBot():
         date_btn = self.driver.find_element_by_id('date_'+date)
         date_btn.click()
 
+<<<<<<< HEAD
     def _find_time(self, time):
         time_btn = self.driver.find_element_by_id()
 
     def book(self, date, time):
         self._find_date(date)
         self._find_time(time)
+=======
+
+# Get login info from user
+
+# Get booking date info from user
+
+# Log in to booking site
+
+# Try to access the date
+
+    # If date does not show, catch exception, refresh page and try again
+
+# Book requested time
+
+    # Send error message if could not be booked
+>>>>>>> 9f98b0bf792f035cbb9a689628f8f7f62a22d53f
