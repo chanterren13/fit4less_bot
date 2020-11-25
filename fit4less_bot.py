@@ -6,24 +6,24 @@ class Fit4LessBot():
     def __init__(self):
         self.driver = webdriver.Chrome('/mnt/c/webdrivers/chromedriver.exe')
 
-    def login(self):
+    def login(self, email, password):
         self.driver.get('https://myfit4less.gymmanager.com/portal/login.asp')
 
         email_in = self.driver.find_element_by_id('emailaddress')
-        email_in.send_keys('terrenjchan@gmail.com')
+        email_in.send_keys(email)
 
         pass_in = self.driver.find_element_by_id('password')
-        pass_in.send_keys('Tc_1022916')
+        pass_in.send_keys(password)
 
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
         login_btn = bot.driver.find_element_by_id('loginButton')
         login_btn.click()
 
-    def _find_date(self):
+    def _find_date(self, date):
         select_date_btn = self.driver.find_element_by_id('btn_date_select')
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        date_btn.click()
+        select_date_btn.click()
 
-        date_btn = self.driver.find_element_by_id('date_2020-11-26')
+        date_btn = self.driver.find_element_by_id('date_'+date)
         date_btn.click()
