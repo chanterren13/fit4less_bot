@@ -28,14 +28,12 @@ class Fit4LessBot():
         date_btn = self.driver.find_element_by_id('date_'+date)
         date_btn.click()
 
-<<<<<<< HEAD
     def _find_time(self, time):
         time_btn = self.driver.find_element_by_id()
 
     def book(self, date, time):
         self._find_date(date)
         self._find_time(time)
-=======
 
 # Get login info from user
 
@@ -50,4 +48,3 @@ class Fit4LessBot():
 # Book requested time
 
     # Send error message if could not be booked
->>>>>>> 9f98b0bf792f035cbb9a689628f8f7f62a22d53f
