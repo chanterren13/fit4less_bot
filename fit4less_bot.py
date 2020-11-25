@@ -27,3 +27,18 @@ class Fit4LessBot():
 
         date_btn = self.driver.find_element_by_id('date_'+date)
         date_btn.click()
+
+
+# Get login info from user
+
+# Get booking date info from user
+
+# Log in to booking site
+
+# Try to access the date
+
+    # If date does not show, catch exception, refresh page and try again
+
+# Book requested time
+
+    # Send error message if could not be booked
