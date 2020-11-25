@@ -1,5 +1,5 @@
 from selenium import webdriver
-from selenium.webdriver import ActionChains
+#from selenium.webdriver import ActionChains
 from time import sleep
 
 class Fit4LessBot():
@@ -27,3 +27,10 @@ class Fit4LessBot():
 
         date_btn = self.driver.find_element_by_id('date_'+date)
         date_btn.click()
+
+    def _find_time(self, time):
+        time_btn = self.driver.find_element_by_id()
+
+    def book(self, date, time):
+        self._find_date(date)
+        self._find_time(time)
