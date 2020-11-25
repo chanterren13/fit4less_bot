@@ -30,10 +30,31 @@ class Fit4LessBot():
 
     def _find_time(self, time):
         # //div[@class='available-slots']/div[@data-slottime='at time']
-        time_btn = self.driver.find_element_by_xpath("//div[@class='reserved-slots'/div[@data-slottime='at "+time+""']")
-        btn_location = str(btn.location['y']+100)
+        time_btn = self.driver.find_element_by_xpath("//div[@class='reserved-slots'/div[@data-slottime='at "+time+"']")
+        time_btn_location = str(time_btn.location['y']+100)
         self.driver.execute_script("window.scrollTo(0, "+btn_location+");")
         time_btn.click()
+
+        confirm_btn = self.driver.find_element_by_id('dialog_book_yes')
+        confirm_location = str(confirm_btn['y']+34)
+        self.driver.execute_scripte("window.scrollTo(0, "+confirm_location+");")
+        confirm_btn.click()
+
+
+    def book(self, date, time):
+        while True:
+            try:
+                self._find_date(date)
+            except NoSuchElementException:
+                self.driver.refresh()
+                continue
+            
+            try:
+                self._find_time(time)
+            except NoSuchElementException:
+                print("Time not available.")
+            
+            break
         
 
 # Get login info from user
