@@ -31,7 +31,7 @@ class Fit4LessBot():
 
     def _find_time(self, time):
         # //div[@class='available-slots']/div[@data-slottime='at time']
-        time_btn = self.driver.find_element_by_xpath("//div[@class='available-slots'/div[@data-slottime='at "+time+"']")
+        time_btn = self.driver.find_element_by_xpath("//div[@class='available-slots']/div[@data-slottime='at "+time+"']")
         time_btn_location = str(time_btn.location['y']+100)
         self.driver.execute_script("window.scrollTo(0, "+time_btn_location+");")
         time_btn.click()
@@ -72,3 +72,7 @@ password = input("Enter your password: ")
 date = input("Enter the date you want to book (YYYY-MM-DD): ")
 time = input("Enter the time you want to book (eg 8:00 PM): ")
 # Log in to booking site
+bot = Fit4LessBot()
+bot.login(email, password)
+
+bot.book(date, time)
