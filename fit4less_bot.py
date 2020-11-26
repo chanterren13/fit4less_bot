@@ -1,5 +1,6 @@
 from selenium import webdriver
 #from selenium.webdriver import ActionChains
+from selenium.common.exceptions import NoSuchElementException
 from time import sleep
 
 class Fit4LessBot():
@@ -30,43 +31,48 @@ class Fit4LessBot():
 
     def _find_time(self, time):
         # //div[@class='available-slots']/div[@data-slottime='at time']
-        time_btn = self.driver.find_element_by_xpath("//div[@class='reserved-slots'/div[@data-slottime='at "+time+"']")
+        time_btn = self.driver.find_element_by_xpath("//div[@class='available-slots'/div[@data-slottime='at "+time+"']")
         time_btn_location = str(time_btn.location['y']+100)
         self.driver.execute_script("window.scrollTo(0, "+btn_location+");")
         time_btn.click()
 
         confirm_btn = self.driver.find_element_by_id('dialog_book_yes')
         confirm_location = str(confirm_btn['y']+34)
-        self.driver.execute_scripte("window.scrollTo(0, "+confirm_location+");")
+        self.driver.execute_script("window.scrollTo(0, "+confirm_location+");")
         confirm_btn.click()
 
 
     def book(self, date, time):
         while True:
+            # Try to find the date 
             try:
                 self._find_date(date)
             except NoSuchElementException:
+                # If not available, refresh until it is
                 self.driver.refresh()
                 continue
             
+            # Try to find the time
             try:
                 self._find_time(time)
             except NoSuchElementException:
+                # If not available, likely already full
                 print("Time not available.")
+                break
             
+            print("Successfully booked "+date+" at "+time)
             break
         
 
 # Get login info from user
-
+print("If using Python2 or older, please wrap the info in single quotes (eg 'john@email.com').")
+email = input("Enter your email: ")
+password = input("Enter your password: ")
 # Get booking date info from user
-
+date = input("Enter the date you want to book (YYYY-MM-DD): ")
+time = input("Enter the time you want to book (eg 8:00 PM): ")
 # Log in to booking site
+#bot = Fit4LessBot()
+#bot.login(email, password)
 
-# Try to access the date
-
-    # If date does not show, catch exception, refresh page and try again
-
-# Book requested time
-
-    # Send error message if could not be booked
+#bot.book(date, time)
