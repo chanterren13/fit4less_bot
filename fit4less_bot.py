@@ -37,7 +37,7 @@ class Fit4LessBot():
         time_btn.click()
 
         confirm_btn = self.driver.find_element_by_id('dialog_book_yes')
-        confirm_location = str(confirm_btn['y']+34)
+        confirm_location = str(confirm_btn.location['y']+34)
         self.driver.execute_script("window.scrollTo(0, "+confirm_location+");")
         confirm_btn.click()
 
