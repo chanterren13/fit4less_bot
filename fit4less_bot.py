@@ -69,7 +69,7 @@ print("If using Python2 or older, please wrap the info in single quotes (eg 'joh
 email = input("Enter your email: ")
 password = input("Enter your password: ")
 # Get booking date info from user
-date = input("Enter the date you want to book (YYYY-MM-DD): ")
+date = input("Enter the date you want to book.. (YYYY-MM-DD): ")
 time = input("Enter the time you want to book (eg 8:00 PM): ")
 # Log in to booking site
 bot = Fit4LessBot()
