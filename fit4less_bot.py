@@ -5,7 +5,8 @@ from time import sleep
 
 class Fit4LessBot():
     def __init__(self):
-        self.driver = webdriver.Chrome(executable_path='/mnt/c/webdrivers/chromedriver.exe')
+        # Add the location of your chromium webdriver here
+        self.driver = webdriver.Chrome(executable_path='location/of/driver')
 
     def login(self, email, password):
         self.driver.get('https://myfit4less.gymmanager.com/portal/login.asp')
@@ -30,7 +31,6 @@ class Fit4LessBot():
         date_btn.click()
 
     def _find_time(self, time):
-        # //div[@class='available-slots']/div[@data-slottime='at time']
         time_btn = self.driver.find_element_by_xpath("//div[@class='available-slots']/div[@data-slottime='at "+time+"']")
         time_btn_location = str(time_btn.location['y']+100)
         self.driver.execute_script("window.scrollTo(0, "+time_btn_location+");")
